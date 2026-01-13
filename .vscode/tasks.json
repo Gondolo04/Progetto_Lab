@@ -1,0 +1,68 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cmake",
+			"label": "CMake: Configure",
+			"command": "configure",
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "Configure CMake project"
+		},
+		{
+			"type": "cmake",
+			"label": "CMake: Build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"detail": "Build all targets",
+			"dependsOn": "CMake: Configure"
+		},
+		{
+			"type": "cmake",
+			"label": "CMake: Clean",
+			"command": "clean",
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "Clean build artifacts"
+		},
+		{
+			"type": "shell",
+			"label": "Run AStarGame",
+			"command": "${workspaceFolder}/build/Release/AStarGame.exe",
+			"group": "test",
+			"dependsOn": "CMake: Build",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new"
+			},
+			"detail": "Run the built executable"
+		},
+		{
+			"type": "shell",
+			"label": "Debug Build",
+			"command": "cmake",
+			"args": [
+				"--build", 
+				"${workspaceFolder}/build", 
+				"--config", 
+				"Debug"
+			],
+			"group": "build",
+			"problemMatcher": [
+				"$gcc"
+			],
+			"detail": "Build in Debug configuration"
+		}
+	]
+}
