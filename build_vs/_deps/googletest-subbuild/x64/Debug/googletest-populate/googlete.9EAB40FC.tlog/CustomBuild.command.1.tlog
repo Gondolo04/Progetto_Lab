@@ -1,0 +1,152 @@
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\CCDF5131BDC41A491DC37DD0E6F06CD7\GOOGLETEST-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/tmp/googletest-populate-mkdirs.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-mkdir"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\CCDF5131BDC41A491DC37DD0E6F06CD7\GOOGLETEST-POPULATE-DOWNLOAD.RULE
+setlocal
+cd "C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-download"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\CCDF5131BDC41A491DC37DD0E6F06CD7\GOOGLETEST-POPULATE-UPDATE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-update"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\CCDF5131BDC41A491DC37DD0E6F06CD7\GOOGLETEST-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-patch"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\CCDF5131BDC41A491DC37DD0E6F06CD7\GOOGLETEST-POPULATE-CONFIGURE.RULE
+setlocal
+cd "C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-build"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-configure"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\CCDF5131BDC41A491DC37DD0E6F06CD7\GOOGLETEST-POPULATE-BUILD.RULE
+setlocal
+cd "C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-build"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-build"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\CCDF5131BDC41A491DC37DD0E6F06CD7\GOOGLETEST-POPULATE-INSTALL.RULE
+setlocal
+cd "C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-build"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-install"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\CCDF5131BDC41A491DC37DD0E6F06CD7\GOOGLETEST-POPULATE-TEST.RULE
+setlocal
+cd "C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-build"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-test"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\B96088D947E39DD5CD75492D01F21921\GOOGLETEST-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/CMakeFiles/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/CMakeFiles/Debug/googletest-populate-complete"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/Debug/googletest-populate-done"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\DA795838E7E45BF7C86FC527FDC130D2\GOOGLETEST-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ANDREA\PROGRAMMINGPROJECTS\VSC PROJECTS\PROGETTO_LAB\BUILD_VS\_DEPS\GOOGLETEST-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild" "-BC:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild" --check-stamp-file "C:/Users/Andrea/ProgrammingProjects/VSC Projects/Progetto_Lab/build_vs/_deps/googletest-subbuild/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

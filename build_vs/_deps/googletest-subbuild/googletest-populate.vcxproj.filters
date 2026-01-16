@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\ccdf5131bdc41a491dc37dd0e6f06cd7\googletest-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\ccdf5131bdc41a491dc37dd0e6f06cd7\googletest-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\ccdf5131bdc41a491dc37dd0e6f06cd7\googletest-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\ccdf5131bdc41a491dc37dd0e6f06cd7\googletest-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\ccdf5131bdc41a491dc37dd0e6f06cd7\googletest-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\ccdf5131bdc41a491dc37dd0e6f06cd7\googletest-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\ccdf5131bdc41a491dc37dd0e6f06cd7\googletest-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\ccdf5131bdc41a491dc37dd0e6f06cd7\googletest-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\b96088d947e39dd5cd75492d01f21921\googletest-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\da795838e7e45bf7c86fc527fdc130d2\googletest-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Andrea\ProgrammingProjects\VSC Projects\Progetto_Lab\build_vs\_deps\googletest-subbuild\CMakeFiles\googletest-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1A5E9A7F-3371-335F-9B1D-D69750C9C8E4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
