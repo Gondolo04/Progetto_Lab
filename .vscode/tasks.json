@@ -37,16 +37,16 @@
 		{
 			"type": "shell",
 			"label": "Run AStarGame",
-			"command": "${workspaceFolder}/build/Release/AStarGame.exe",
+			"command": "${workspaceFolder}/build/Debug/AStarGame.exe",
 			"group": "test",
-			"dependsOn": "CMake: Build",
+			"dependsOn": "Debug Build",
 			"presentation": {
 				"echo": true,
 				"reveal": "always",
 				"focus": false,
 				"panel": "new"
 			},
-			"detail": "Run the built executable"
+			"detail": "Run the built executable in Debug mode"
 		},
 		{
 			"type": "shell",
@@ -63,6 +63,22 @@
 				"$gcc"
 			],
 			"detail": "Build in Debug configuration"
+		},
+		{
+			"type": "shell",
+			"label": "Release Build", 
+			"command": "cmake",
+			"args": [
+				"--build",
+				"${workspaceFolder}/build",
+				"--config", 
+				"Release"
+			],
+			"group": "build",
+			"problemMatcher": [
+				"$gcc"
+			],
+			"detail": "Build in Release configuration"
 		}
 	]
 }

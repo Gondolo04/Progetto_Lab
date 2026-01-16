@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "pathfinding/grid.h"
+#include "pathfinding/character.h"
 
 int main() {
     // Create a window
@@ -14,20 +15,17 @@ int main() {
     // Add some test obstacles to see the grid
     grid.addTestObstacles();
     
+    // Create a character starting at position (1, 1)
+    Character player(Position(1, 1), sf::Color::Green);
+    
     std::cout << "Grid created successfully!" << std::endl;
     std::cout << "Grid size: " << grid.getWidth() << "x" << grid.getHeight() << std::endl;
-    std::cout << "Controls: ESC to close, Left-click to add walls, Right-click to remove walls" << std::endl;
-    
-    // Test some basic grid functionality
-    std::cout << "Testing grid functions:" << std::endl;
-    std::cout << "Position (0,0) walkable: " << (grid.isWalkable(0, 0) ? "Yes" : "No") << std::endl;
-    std::cout << "Position (10,8) walkable: " << (grid.isWalkable(10, 8) ? "Yes" : "No") << " (should be No - wall)" << std::endl;
-    
-    // Test neighbors
-    Position testPos(5, 5);
-    auto neighbors = grid.getNeighbors(testPos);
-    std::cout << "Position (5,5) has " << neighbors.size() << " walkable neighbors" << std::endl;
-    
+    std::cout << "Controls:" << std::endl;
+    std::cout << "  WASD or Arrow Keys to move character" << std::endl;
+    std::cout << "  1-5 keys to change character color" << std::endl;
+    std::cout << "  ESC to close" << std::endl;
+    std::cout << "  Left-click to add walls, Right-click to remove walls" << std::endl;
+
     // Main loop
     while (window.isOpen()) {
         // Handle events
@@ -39,6 +37,32 @@ int main() {
             if (auto keyPressed = event->getIf<sf::Event::KeyPressed>()) {
                 if (keyPressed->code == sf::Keyboard::Key::Escape) {
                     window.close();
+                }
+                
+                // Color changing with number keys
+                switch (keyPressed->code) {
+                    case sf::Keyboard::Key::Num1:
+                        player.setColor(sf::Color::Green);
+                        std::cout << "Character color changed to Green" << std::endl;
+                        break;
+                    case sf::Keyboard::Key::Num2:
+                        player.setColor(sf::Color::Blue);
+                        std::cout << "Character color changed to Blue" << std::endl;
+                        break;
+                    case sf::Keyboard::Key::Num3:
+                        player.setColor(sf::Color::Red);
+                        std::cout << "Character color changed to Red" << std::endl;
+                        break;
+                    case sf::Keyboard::Key::Num4:
+                        player.setColor(sf::Color::Yellow);
+                        std::cout << "Character color changed to Yellow" << std::endl;
+                        break;
+                    case sf::Keyboard::Key::Num5:
+                        player.setColor(sf::Color::Magenta);
+                        std::cout << "Character color changed to Magenta" << std::endl;
+                        break;
+                    default:
+                        break;
                 }
             }
             
@@ -61,11 +85,17 @@ int main() {
             }
         }
         
+        // Handle character movement
+        player.handleInput(grid);
+        
         // Clear screen
         window.clear(sf::Color::Black);
         
         // Draw the grid
         grid.render(window, tileSize);
+        
+        // Draw the character
+        player.render(window, tileSize);
         
         // Display
         window.display();

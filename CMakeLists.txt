@@ -26,6 +26,7 @@ find_package(SFML 3.0 REQUIRED COMPONENTS Graphics)
 # Enable testing
 enable_testing()
 
+
 # Google Test setup
 include(FetchContent)
 
@@ -44,6 +45,7 @@ FetchContent_MakeAvailable(googletest)
 # Create a library for the Grid class (so it can be tested)
 add_library(pathfinding_lib STATIC
     src/grid.cpp
+    src/character.cpp
 )
 
 # Set C++ standard for the library
