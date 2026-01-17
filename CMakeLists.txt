@@ -69,7 +69,7 @@ if(WIN32)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         "C:/sfml/SFML-3.0.2/bin"
-        $<TARGET_FILE_DIR:${PROJECT_NAME}>)
+        "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
 endif()
 
 # Tests
@@ -81,5 +81,32 @@ target_link_libraries(grid_tests
     gtest
 )
 
+add_executable(character_tests tests/character_test.cpp)
+target_compile_features(character_tests PRIVATE cxx_std_17)
+target_link_libraries(character_tests 
+    pathfinding_lib 
+    gtest_main 
+    gtest
+)
+
+# Copy SFML DLLs for test executables on Windows
+if(WIN32)
+    add_custom_command(TARGET grid_tests POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "C:/sfml/SFML-3.0.2/bin"
+        "$<TARGET_FILE_DIR:grid_tests>")
+    
+    add_custom_command(TARGET character_tests POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "C:/sfml/SFML-3.0.2/bin"
+        "$<TARGET_FILE_DIR:character_tests>")
+endif()
+
 include(GoogleTest)
-gtest_discover_tests(grid_tests)
+# Disable automatic test discovery to avoid DLL dependency issues during build
+# gtest_discover_tests(grid_tests)
+# gtest_discover_tests(character_tests)
+
+# Instead, add simple test registration
+add_test(NAME grid_tests COMMAND grid_tests)
+add_test(NAME character_tests COMMAND character_tests)

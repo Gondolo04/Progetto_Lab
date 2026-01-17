@@ -28,6 +28,10 @@ public:
     void setColor(const sf::Color& color) {
          color_ = color;
     }
+
+    const sf::Color& getColor() const {
+         return color_;
+    }
     
     // Rendering
     void render(sf::RenderWindow& window, float tileSize) const;

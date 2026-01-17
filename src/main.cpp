@@ -8,14 +8,12 @@ int main() {
     sf::RenderWindow window(sf::VideoMode({800, 600}), "Grid Test - A* Game");
     window.setFramerateLimit(60);
     
-    // Create a test grid (40x30 fits nicely in 800x600 with 20px tiles)
     Grid grid(40, 30);
     float tileSize = 20.0f;
     
     // Add some test obstacles to see the grid
     grid.addTestObstacles();
     
-    // Create a character starting at position (1, 1)
     Character player(Position(1, 1), sf::Color::Green);
     
     std::cout << "Grid created successfully!" << std::endl;
@@ -23,10 +21,10 @@ int main() {
     std::cout << "Controls:" << std::endl;
     std::cout << "  WASD or Arrow Keys to move character manually" << std::endl;
     std::cout << "  1-5 keys to change character color" << std::endl;
-    std::cout << "  ESC to close" << std::endl;
-    std::cout << "  Left-click to add walls" << std::endl;
+    std::cout << "  ESC to close window" << std::endl;
+    std::cout << "  Left-click to add walls (disabled during pathfinding)" << std::endl;
     std::cout << "  Right-click to find path to target location (A*)" << std::endl;
-    std::cout << "  Middle-click to remove walls" << std::endl;
+    std::cout << "  Middle-click to remove walls (disabled during pathfinding)" << std::endl;
 
     // Main loop
     while (window.isOpen()) {
@@ -38,7 +36,7 @@ int main() {
             
             if (auto keyPressed = event->getIf<sf::Event::KeyPressed>()) {
                 if (keyPressed->code == sf::Keyboard::Key::Escape) {
-                    window.close();
+                        window.close();
                 }
                 
                 // Color changing with number keys
@@ -76,10 +74,12 @@ int main() {
                 if (grid.isInBounds(gridX, gridY)) {
                     if (mousePressed->button == sf::Mouse::Button::Left) {
                         // Left click - add wall
-                        Position pos(gridX, gridY);
-                        if (pos != player.getPosition()) { // Don't place wall on player
-                            grid.setCell(gridX, gridY, CellType::Wall);
-                            std::cout << "Added wall at (" << gridX << ", " << gridY << ")" << std::endl;
+                        if (!player.hasPath()) {
+                            Position pos(gridX, gridY);
+                            if (pos != player.getPosition()) { // Don't place wall on player
+                                grid.setCell(gridX, gridY, CellType::Wall);
+                                std::cout << "Added wall at (" << gridX << ", " << gridY << ")" << std::endl;
+                            }
                         }
                     } else if (mousePressed->button == sf::Mouse::Button::Right) {
                         // Right click - find path to target using A*
@@ -93,8 +93,10 @@ int main() {
                         }
                     } else if (mousePressed->button == sf::Mouse::Button::Middle) {
                         // Middle click - remove wall
-                        grid.setCell(gridX, gridY, CellType::Empty);
-                        std::cout << "Removed wall at (" << gridX << ", " << gridY << ")" << std::endl;
+                        if (!player.hasPath()) {
+                            grid.setCell(gridX, gridY, CellType::Empty);
+                            std::cout << "Removed wall at (" << gridX << ", " << gridY << ")" << std::endl;
+                        }
                     }
                 }
             }

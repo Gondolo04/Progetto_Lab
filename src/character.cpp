@@ -39,6 +39,10 @@ void Character::render(sf::RenderWindow& window, float tileSize) const {
                 currentPath_[i].x * tileSize,
                 currentPath_[i].y * tileSize
             ));
+            pathTile.setFillColor(sf::Color(255, 255, 0, 100)); // if you want visible path
+            pathTile.setOutlineColor(sf::Color::Yellow);
+            pathTile.setOutlineThickness(1.0f);
+            window.draw(pathTile);
         }
     }
     
