@@ -97,6 +97,14 @@ target_link_libraries(pathfinder_tests
     gtest
 )
 
+add_executable(gridstate_tests tests/gridstate_test.cpp)
+target_compile_features(gridstate_tests PRIVATE cxx_std_17)
+target_link_libraries(gridstate_tests 
+    pathfinding_lib 
+    gtest_main 
+    gtest
+)
+
 # Copy SFML DLLs for test executables on Windows
 if(WIN32)
     add_custom_command(TARGET grid_tests POST_BUILD
@@ -113,6 +121,11 @@ if(WIN32)
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         "C:/sfml/SFML-3.0.2/bin"
         "$<TARGET_FILE_DIR:pathfinder_tests>")
+    
+    add_custom_command(TARGET gridstate_tests POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "C:/sfml/SFML-3.0.2/bin"
+        "$<TARGET_FILE_DIR:gridstate_tests>")
 endif()
 
 include(GoogleTest)
@@ -125,6 +138,10 @@ gtest_discover_tests(character_tests
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 gtest_discover_tests(pathfinder_tests
+    DISCOVERY_MODE PRE_TEST  
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+gtest_discover_tests(gridstate_tests
     DISCOVERY_MODE PRE_TEST  
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
