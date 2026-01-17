@@ -5,14 +5,14 @@
     "cmake.platform": "x64",
     "cmake.defaultVariants": {
         "buildType": {
-            "default": "Release",
+            "default": "Debug",
             "choices": {
-                "debug": {
+                "Debug": {
                     "short": "Debug",
                     "long": "Emit debug information",
                     "buildType": "Debug"
                 },
-                "release": {
+                "Release": {
                     "short": "Release", 
                     "long": "Optimize generated code",
                     "buildType": "Release"
