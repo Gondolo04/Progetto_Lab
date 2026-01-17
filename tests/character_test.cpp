@@ -123,61 +123,23 @@ TEST_F(CharacterTest, MovementBlockedByWalls) {
     EXPECT_EQ(character->getPosition(), startPos); // Should remain at original position
 }
 
-// Test pathfinding to a valid target
-TEST_F(CharacterTest, FindPathToValidTarget) {
+// Test pathfinding integration and path state management
+TEST_F(CharacterTest, PathfindingIntegration) {
     Position target{3, 3};
     
+    // Test successful pathfinding sets up state correctly
     EXPECT_TRUE(character->findPathTo(*grid, target));
     EXPECT_TRUE(character->hasPath());
     EXPECT_FALSE(character->getCurrentPath().empty());
-}
-
-
-// Test pathfinding to blocked target
-TEST_F(CharacterTest, FindPathToBlockedTarget) {
-    // Create a completely walled-off target
-    Position target{3, 3};
-    grid->setCell(Position{3, 3}, CellType::Wall);
     
-    EXPECT_FALSE(character->findPathTo(*grid, target));
-    EXPECT_FALSE(character->hasPath());
-    EXPECT_TRUE(character->getCurrentPath().empty());
-}
-
-// Test pathfinding to unreachable target
-TEST_F(CharacterTest, FindPathToUnreachableTarget) {
-    // Create a wall barrier that blocks access to the target
-    Position target{3, 3};
-    
-    // Create a wall around the target
-    grid->setCell(Position{2, 2}, CellType::Wall);
-    grid->setCell(Position{2, 3}, CellType::Wall);
-    grid->setCell(Position{2, 4}, CellType::Wall);
-    grid->setCell(Position{3, 2}, CellType::Wall);
-    grid->setCell(Position{3, 4}, CellType::Wall);
-    grid->setCell(Position{4, 2}, CellType::Wall);
-    grid->setCell(Position{4, 3}, CellType::Wall);
-    grid->setCell(Position{4, 4}, CellType::Wall);
-    
-    EXPECT_FALSE(character->findPathTo(*grid, target));
-    EXPECT_FALSE(character->hasPath());
-}
-
-
-// Test clearing path
-TEST_F(CharacterTest, ClearPath) {
-    Position target{3, 3};
-    
-    character->findPathTo(*grid, target);
-    
-    // Clear the path
+    // Test clearing path
     character->clearPath();
     EXPECT_FALSE(character->hasPath());
     EXPECT_TRUE(character->getCurrentPath().empty());
 }
 
-// Test path completion
-TEST_F(CharacterTest, PathCompletion) {
+// Test path following behavior
+TEST_F(CharacterTest, PathFollowingBehavior) {
     Position target{2, 1}; // Adjacent position
     
     EXPECT_TRUE(character->findPathTo(*grid, target));
@@ -188,8 +150,8 @@ TEST_F(CharacterTest, PathCompletion) {
         character->followPath();
     }
     
-    // Should have reached target and cleared path
+    // Should have reached target and cleared path automatically
     EXPECT_EQ(character->getPosition(), target);
     EXPECT_FALSE(character->hasPath());
 }
-} 
+}

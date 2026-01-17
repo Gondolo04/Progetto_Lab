@@ -89,6 +89,14 @@ target_link_libraries(character_tests
     gtest
 )
 
+add_executable(pathfinder_tests tests/pathfinder_test.cpp)
+target_compile_features(pathfinder_tests PRIVATE cxx_std_17)
+target_link_libraries(pathfinder_tests 
+    pathfinding_lib 
+    gtest_main 
+    gtest
+)
+
 # Copy SFML DLLs for test executables on Windows
 if(WIN32)
     add_custom_command(TARGET grid_tests POST_BUILD
@@ -100,13 +108,23 @@ if(WIN32)
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         "C:/sfml/SFML-3.0.2/bin"
         "$<TARGET_FILE_DIR:character_tests>")
+    
+    add_custom_command(TARGET pathfinder_tests POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "C:/sfml/SFML-3.0.2/bin"
+        "$<TARGET_FILE_DIR:pathfinder_tests>")
 endif()
 
 include(GoogleTest)
-# Disable automatic test discovery to avoid DLL dependency issues during build
-# gtest_discover_tests(grid_tests)
-# gtest_discover_tests(character_tests)
-
-# Instead, add simple test registration
-add_test(NAME grid_tests COMMAND grid_tests)
-add_test(NAME character_tests COMMAND character_tests)
+gtest_discover_tests(grid_tests
+    DISCOVERY_MODE PRE_TEST
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+gtest_discover_tests(character_tests
+    DISCOVERY_MODE PRE_TEST  
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+gtest_discover_tests(pathfinder_tests
+    DISCOVERY_MODE PRE_TEST  
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
