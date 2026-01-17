@@ -46,6 +46,8 @@ FetchContent_MakeAvailable(googletest)
 add_library(pathfinding_lib STATIC
     src/grid.cpp
     src/character.cpp
+    src/pathfinder.cpp
+    src/gridstate.cpp
 )
 
 # Set C++ standard for the library

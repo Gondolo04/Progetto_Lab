@@ -21,10 +21,12 @@ int main() {
     std::cout << "Grid created successfully!" << std::endl;
     std::cout << "Grid size: " << grid.getWidth() << "x" << grid.getHeight() << std::endl;
     std::cout << "Controls:" << std::endl;
-    std::cout << "  WASD or Arrow Keys to move character" << std::endl;
+    std::cout << "  WASD or Arrow Keys to move character manually" << std::endl;
     std::cout << "  1-5 keys to change character color" << std::endl;
     std::cout << "  ESC to close" << std::endl;
-    std::cout << "  Left-click to add walls, Right-click to remove walls" << std::endl;
+    std::cout << "  Left-click to add walls" << std::endl;
+    std::cout << "  Right-click to find path to target location (A*)" << std::endl;
+    std::cout << "  Middle-click to remove walls" << std::endl;
 
     // Main loop
     while (window.isOpen()) {
@@ -66,7 +68,7 @@ int main() {
                 }
             }
             
-            // Mouse interaction - click to add/remove walls
+            // Mouse interaction - click to add/remove walls or set pathfinding target
             if (auto mousePressed = event->getIf<sf::Event::MouseButtonPressed>()) {
                 int gridX = static_cast<int>(mousePressed->position.x / tileSize);
                 int gridY = static_cast<int>(mousePressed->position.y / tileSize);
@@ -74,10 +76,23 @@ int main() {
                 if (grid.isInBounds(gridX, gridY)) {
                     if (mousePressed->button == sf::Mouse::Button::Left) {
                         // Left click - add wall
-                        grid.setCell(gridX, gridY, CellType::Wall);
-                        std::cout << "Added wall at (" << gridX << ", " << gridY << ")" << std::endl;
+                        Position pos(gridX, gridY);
+                        if (pos != player.getPosition()) { // Don't place wall on player
+                            grid.setCell(gridX, gridY, CellType::Wall);
+                            std::cout << "Added wall at (" << gridX << ", " << gridY << ")" << std::endl;
+                        }
                     } else if (mousePressed->button == sf::Mouse::Button::Right) {
-                        // Right click - remove wall
+                        // Right click - find path to target using A*
+                        Position target(gridX, gridY);
+                        std::cout << "Finding path to (" << gridX << ", " << gridY << ")..." << std::endl;
+                        
+                        if (player.findPathTo(grid, target)) {
+                            std::cout << "Path found! Character will follow the path." << std::endl;
+                        } else {
+                            std::cout << "No path found to target location." << std::endl;
+                        }
+                    } else if (mousePressed->button == sf::Mouse::Button::Middle) {
+                        // Middle click - remove wall
                         grid.setCell(gridX, gridY, CellType::Empty);
                         std::cout << "Removed wall at (" << gridX << ", " << gridY << ")" << std::endl;
                     }
@@ -85,8 +100,20 @@ int main() {
             }
         }
         
-        // Handle character movement
-        player.handleInput(grid);
+        // Handle character movement (manual input or follow path)
+        if (player.hasPath()) {
+            // Character is following a path, move automatically
+            static sf::Clock pathClock;
+            const float pathDelay = 0.2f; // Delay between path steps
+            
+            if (pathClock.getElapsedTime().asSeconds() >= pathDelay) {
+                player.followPath();
+                pathClock.restart();
+            }
+        } else {
+            // No path, allow manual input
+            player.handleInput(grid);
+        }
         
         // Clear screen
         window.clear(sf::Color::Black);

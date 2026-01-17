@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 Character::Character(const Position& startPos, sf::Color color) 
-    : position_(startPos), color_(color) {
+    : position_(startPos), color_(color), pathIndex_(0) {
 }
 
 bool Character::moveUp(const Grid& grid) {
@@ -31,6 +31,18 @@ bool Character::tryMove(const Grid& grid, const Position& newPos) {
 }
 
 void Character::render(sf::RenderWindow& window, float tileSize) const {
+    // Draw the path if one exists
+    if (hasPath()) {
+        for (size_t i = pathIndex_; i < currentPath_.size(); ++i) {
+            sf::RectangleShape pathTile(sf::Vector2f(tileSize, tileSize));
+            pathTile.setPosition(sf::Vector2f(
+                currentPath_[i].x * tileSize,
+                currentPath_[i].y * tileSize
+            ));
+        }
+    }
+    
+    // Draw the character
     sf::CircleShape characterShape(tileSize / 2.5f);
     characterShape.setFillColor(color_);
     characterShape.setOutlineColor(sf::Color::Black);
@@ -75,4 +87,40 @@ void Character::handleInput(const Grid& grid) {
             moveClock.restart();
         }
     }
+}
+
+// A* Pathfinding implementation
+bool Character::findPathTo(const Grid& grid, const Position& target) {
+    clearPath(); // Clear any existing path
+    
+    if (pathfinder_.findPath(grid, position_, target, currentPath_)) {
+        pathIndex_ = 0; // Start at the beginning of the path
+        // Remove the first position (current position) from the path
+        if (!currentPath_.empty() && currentPath_[0] == position_) {
+            currentPath_.erase(currentPath_.begin());
+        }
+        return true;
+    }
+    return false;
+}
+
+void Character::followPath() {
+    if (!hasPath()) {
+        return;
+    }
+    
+    if (pathIndex_ < currentPath_.size()) {
+        position_ = currentPath_[pathIndex_];
+        pathIndex_++;
+        
+        // Clear path when we reach the end
+        if (pathIndex_ >= currentPath_.size()) {
+            clearPath();
+        }
+    }
+}
+
+void Character::clearPath() {
+    currentPath_.clear();
+    pathIndex_ = 0;
 }
